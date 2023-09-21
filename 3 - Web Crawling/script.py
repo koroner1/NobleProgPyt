@@ -3,7 +3,7 @@ from tkinter import ttk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import pickle
 from functools import partial
-
+from pathlib import Path
 
 root = tk.Tk()
 root.title('Books prices')
@@ -13,10 +13,12 @@ chart_frame = tk.Frame(root, background='#ffffff')
 chart_frame.pack(side=tk.LEFT, padx=10, pady=10)
 
 # load charts
-with open('rating.pickle', 'rb') as file:
+path = Path(__file__).parent / "rating.pickle"
+with open(path, 'rb') as file:
     ratings_chart = pickle.load(file)
 
-with open('stocks.pickle', 'rb') as file:
+path = Path(__file__).parent / "stocks.pickle"
+with open(path, 'rb') as file:
     stocks_chart = pickle.load(file)
 
 current_chart = None
